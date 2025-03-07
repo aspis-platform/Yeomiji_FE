@@ -1,50 +1,37 @@
-# React + TypeScript + Vite
+# 여수 여미지 유기동물 보호소 웹사이트
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 프로젝트 소개
+여수 여미지 유기동물 보호소 웹사이트 프론트엔드 작업입니다. 유기동물한테 관심있는 직장인들이 만든 사설 보호소 사이트고, 동물 입양 정보랑 후원 방법 같은 것들 볼 수 있게 만들었어요.
 
-Currently, two official plugins are available:
+실제 사이트는 [여기](https://yeomiji-shelter.ncloud.sbs/)에서 확인할 수 있습니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 주요 기능
+- 메인 페이지에서 보호소 간단 소개
+- 보호소 단체 정보 제공
+- 입양 가능한 동물들 목록 (사진이랑 정보)
+- 봉사활동 신청 방법
+- 후원 계좌 정보
 
-## Expanding the ESLint configuration
+## 기술 스택
+그냥 기본적인 프론트엔드 기술 썼음
+- HTML/CSS
+- 자바스크립트
+- 반응형 웹 (모바일에서도 잘 보임)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 커밋 규칙
+- feat: 기능 추가
+- chore: 환경 설정 수정
+- fix: 버그 해결
+- rename: 파일, 폴더명 수정 또는 이동
+- remove: 파일 또는 폴더 제거
+- refactor: 리팩토링
+- doc: 주석/문서 추가 및 변경
 
-- Configure the top-level `parserOptions` property like this:
+## 고려사항
+- 심플하게 만들어서 노인분들도 쉽게 이용할 수 있게 함
+- 사진 로딩 최적화해서 느린 네트워크에서도 잘 돌아가게 했음
+- SNS 공유 기능 넣어서 입양 공고 쉽게 퍼질 수 있게 함
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+사이트에 문제 있으면 바로 얘기해주세요. 유기동물들 위한 거라 최대한 빨리 고칠게요.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+[여미지 보호소 사이트 바로가기](https://yeomiji-shelter.ncloud.sbs/)
