@@ -1,7 +1,6 @@
-import React from "react";
 import { styled } from "styled-components";
-import logo_image from "../../assets/yeomiji-logo.svg";
-import { theme } from "../../style/theme";
+import { yeomiji_logo } from "../../assets";
+import { theme } from "../../style";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
@@ -10,7 +9,7 @@ const NavBar = () => {
       <StyledDiv>
         <Link to={"/"} style={{ textDecoration: "none" }}>
           <Logo>
-            <img src={logo_image} alt="yeomiji logo" />
+            <img src={yeomiji_logo} alt="yeomiji logo" />
             <Title>
               <p>
                 여미지 <br /> 여수 유기 동물 쉼터

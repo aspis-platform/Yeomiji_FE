@@ -1,9 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import logo_image from "../../assets/yeomiji-logo.svg";
-import AiChatButton from "../base/AiChatButton";
-import { theme } from "../../style/theme";
-import CafeButton from "../base/CafeButton";
+import { yeomiji_logo } from "../../assets";
+import { theme } from "../../style";
 
 const WelcomeBanner = () => {
   return (
@@ -11,7 +8,7 @@ const WelcomeBanner = () => {
       <BannerContent>
         <MainContent>
           <LogoWrapper>
-            <img src={logo_image} alt="여미지 로고" />
+            <img src={yeomiji_logo} alt="여미지 로고" />
           </LogoWrapper>
           <ContentContainer>
             <Title>여수 여미지 보호소</Title>
