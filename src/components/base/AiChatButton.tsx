@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import aiLogo from "../../assets/ai-icon.svg";
-import { theme } from "../../style/theme";
+import { ai_icon } from "../../assets";
+import { theme } from "../../style";
+import { useOverlay } from "../../context/OverlayContext";
 
 const AiChatButton = () => {
+  const { openOverlay } = useOverlay();
+
   return (
-    <StyledAiChatButton>
-      <StyledImage src={aiLogo} alt="Naver Cafe Logo" />
+    <StyledAiChatButton onClick={openOverlay}>
+      <StyledImage src={ai_icon} alt="Naver Cafe Logo" />
       <span>AI 채팅</span>
     </StyledAiChatButton>
   );

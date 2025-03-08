@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import donate_image from "../../../assets/donate-image.svg";
-import donate_image_green from "../../../assets/donate-image-green.svg";
+import { theme } from "../../../style";
+import { donate_img, donate_img_green } from "../../../assets";
 import { Link } from "react-router-dom";
 
 const DonateButton = () => {
@@ -9,8 +8,8 @@ const DonateButton = () => {
     <Link to={"/donation"} style={{ textDecoration: "none" }}>
       <ButtonContainer>
         <MainButton>
-          <OrgImg src={donate_image} />
-          <ChgImg src={donate_image_green} />
+          <OrgImg src={donate_img} />
+          <ChgImg src={donate_img_green} />
         </MainButton>
         <ButtonDesc>후원 안내</ButtonDesc>
       </ButtonContainer>

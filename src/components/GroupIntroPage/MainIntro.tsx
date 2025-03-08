@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const MainIntro = () => {
+export const MainIntro = () => {
   return (
     <MainIntroSection>
       <TextSection>
@@ -20,7 +19,7 @@ const MainIntro = () => {
             </li>
             <li>유기동물 구조 및 치료 사업</li>
             <li>동물보호 캠페인, 교육사업</li>
-            <li>동물보호 기금 마련을 위한 모금 사업</li>
+            <li>동물보호 기금 마련을 위한 모금 사업</li>
           </ListText>
         </TextContainer>
       </TextSection>
@@ -58,5 +57,3 @@ const MainIntroSection = styled.section`
   height: 100%;
   padding: 80px 0 128px;
 `;
-
-export default MainIntro;

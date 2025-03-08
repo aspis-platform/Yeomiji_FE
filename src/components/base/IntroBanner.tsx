@@ -1,16 +1,13 @@
-import React from "react";
 import styled from "styled-components";
-import { theme } from "../../style/theme";
-import banner_image from "../../assets/banner-image.svg";
-import left_quote from "../../assets/quotes-left.svg";
-import right_quote from "../../assets/quotes-right.svg";
+import { theme } from "../../style";
+import { banner_img, quotes_left, quotes_right } from "../../assets";
 
 const IntroBanner = () => {
   return (
     <BannerContainer>
       <TextContainer>
         <QuoteRow>
-          <img src={left_quote} />
+          <img src={quotes_left} />
           <TextBox>
             <p>유기동물을 사랑하는</p>
             <p>직장인 봉사자들이</p>
@@ -19,10 +16,10 @@ const IntroBanner = () => {
           </TextBox>
         </QuoteRow>
 
-        <RightQuote src={right_quote} />
+        <RightQuote src={quotes_right} />
       </TextContainer>
       <ImageContainer>
-        <img src={banner_image} alt="" />
+        <img src={banner_img} alt="" />
       </ImageContainer>
     </BannerContainer>
   );

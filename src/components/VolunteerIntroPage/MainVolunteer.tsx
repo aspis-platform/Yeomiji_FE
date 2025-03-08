@@ -1,9 +1,8 @@
-import React from "react";
 import styled from "styled-components";
-import HowToVolunteer from "./HowToVolunteer";
 import VolunteerAPL from "./VolunteerAPL";
 import Supplies from "./Supplies";
 import Guideline from "./Guideline";
+import HowToVolunteer from "./HowToVolunteer";
 
 const MainVolunteer = () => {
   return (

@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import AI_logo from "../../../assets/YeomijiAiLogoFull.svg";
-import dog_3d from "../../../assets/dog_img_3d.svg";
+import { theme } from "../../../style";
+import { yeomiji_ai_logo, dog_img_3d } from "../../../assets";
 
 const ResultView = () => {
   return (
     <>
       <ResultSection>
         <BreedName>포메라니안</BreedName>
-        <img src={dog_3d} />
+        <img src={dog_img_3d} />
         <div>
           포메라니안은 작고 귀여운 외모와 풍성한 털을 가진 소형견으로, 활발하고
           영리한 성격이 특징입니다. 경계심이 강하지만 애정이 많아 주인과의
@@ -20,7 +19,7 @@ const ResultView = () => {
 
       <BottomSection>
         <SignatureContainer>
-          <img src={AI_logo} alt="AI 로고" />
+          <img src={yeomiji_ai_logo} alt="AI 로고" />
           <p>개인정보 처리방침 및 사용약관</p>
         </SignatureContainer>
       </BottomSection>

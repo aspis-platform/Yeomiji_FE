@@ -1,9 +1,6 @@
-import React from "react";
-import DonateButton from "./Buttons/DonateButton";
-import AdoptButton from "./Buttons/AdoptButton";
-import VolunteerButton from "./Buttons/VolunteerButton";
 import styled from "styled-components";
-import { theme } from "../../style/theme";
+import { theme } from "../../style";
+import { DonateButton, AdoptButton, VolunteerButton } from "./Buttons";
 
 const HelpYeomiji = () => {
   return (

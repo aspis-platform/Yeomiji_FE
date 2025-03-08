@@ -1,21 +1,19 @@
-import React from "react";
 import styled from "styled-components";
-import dog_3d from "../../../assets/dog_img_3d.svg";
-import AI_logo from "../../../assets/YeomijiAiLogoFull.svg";
-import { theme } from "../../../style/theme";
+import { dog_img_3d, yeomiji_ai_logo } from "../../../assets";
+import { theme } from "../../../style";
 
 interface WelcomeScreenProps {
   onNext: () => void;
 }
 
-const WelcomeView: React.FC<WelcomeScreenProps> = ({ onNext }) => {
+const WelcomeView = ({ onNext }: WelcomeScreenProps) => {
   return (
     <>
-      <DogImage src={dog_3d} alt="강아지 이미지" />
+      <DogImage src={dog_img_3d} alt="강아지 이미지" />
       <BottomSection>
         <ContinueButton onClick={onNext}>시작하기</ContinueButton>
         <SignatureContainer>
-          <img src={AI_logo} alt="Gram Ai" />
+          <img src={yeomiji_ai_logo} alt="Gram Ai" />
           <p>개인정보 처리방침 및 사용약관</p>
         </SignatureContainer>
       </BottomSection>

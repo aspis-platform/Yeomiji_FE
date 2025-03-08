@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 interface DogProps {
@@ -9,7 +8,7 @@ interface DogProps {
   imageUrl: string;
 }
 
-const NTCCard: React.FC<DogProps> = ({ name, gender, size, age, imageUrl }) => {
+const NTCCard = ({ name, gender, size, age, imageUrl }: DogProps) => {
   return (
     <Card>
       <ImageWrapper>

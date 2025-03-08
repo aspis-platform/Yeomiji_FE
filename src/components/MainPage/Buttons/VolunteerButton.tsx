@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import volunteer_image from "../../../assets/volunteer-image.svg";
-import volunteer_image_green from "../../../assets/volunteer-image-green.svg";
+import { theme } from "../../../style";
+import { volunteer_img, volunteer_img_green } from "../../../assets";
 import { Link } from "react-router-dom";
 
 const VolunteerButton = () => {
@@ -9,8 +8,8 @@ const VolunteerButton = () => {
     <Link to={"/volunteer"} style={{ textDecoration: "none" }}>
       <ButtonContainer>
         <MainButton>
-          <OrgImg src={volunteer_image} />
-          <ChgImg src={volunteer_image_green} />
+          <OrgImg src={volunteer_img} />
+          <ChgImg src={volunteer_img_green} />
         </MainButton>
         <ButtonDesc>봉사활동 안내</ButtonDesc>
       </ButtonContainer>

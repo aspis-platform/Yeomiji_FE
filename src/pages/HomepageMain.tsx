@@ -1,14 +1,9 @@
-import React from "react";
-import WelcomeBanner from "../components/MainPage/WelcomeBanner";
 import styled from "styled-components";
-import HelpYeomiji from "../components/MainPage/HelpYeomiji";
-import AdoptNTC from "../components/MainPage/AdoptNTC";
-import AiChatModal from "../components/AiChat/AiChatModal";
+import { WelcomeBanner, HelpYeomiji, AdoptNTC } from "../components/MainPage";
 
 const HomepageMain = () => {
   return (
     <StyledContainer>
-      <AiChatModal />
       <StyledSection>
         <WelcomeBanner />
         <HelpYeomiji />

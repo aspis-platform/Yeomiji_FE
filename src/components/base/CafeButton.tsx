@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import naverLogo from "../../assets/naver-cafe-logo.webp";
+import { naver_cafe_logo } from "../../assets";
 import { Link } from "react-router-dom";
 
 const CafeButton = () => {
@@ -10,7 +10,7 @@ const CafeButton = () => {
       target="_blank"
     >
       <StyledBlogButton>
-        <StyledImage src={naverLogo} alt="Naver Cafe Logo" />
+        <StyledImage src={naver_cafe_logo} alt="Naver Cafe Logo" />
         <span>카페</span>
       </StyledBlogButton>
     </Link>
