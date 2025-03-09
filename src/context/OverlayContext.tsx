@@ -6,7 +6,11 @@ interface OverlayContextType {
   closeOverlay: () => void;
 }
 
-const OverlayContext = createContext<OverlayContextType | null>(null);
+const OverlayContext = createContext<OverlayContextType>({
+  isOpen: false,
+  openOverlay: () => {},
+  closeOverlay: () => {},
+});
 
 interface OverlayProviderProp {
   children: ReactNode;
