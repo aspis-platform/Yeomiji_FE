@@ -14,7 +14,7 @@ import { OverlayProvider } from "./context/OverlayContext";
 import { useOverlay } from "./context/OverlayContext";
 
 function Layout() {
-  const { isOpen, closeOverlay } = useOverlay();
+  const { closeOverlay } = useOverlay();
 
   return (
     <>
@@ -29,8 +29,6 @@ function Layout() {
         <Outlet />
         <Footer />
       </Wrapper>
-
-      {isOpen && <AiChatModal onClose={closeOverlay} />}
     </>
   );
 }

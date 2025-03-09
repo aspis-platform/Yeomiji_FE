@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import { AiChatModal } from "../components/AiChat";
 
 interface OverlayContextType {
   isOpen: boolean;
@@ -25,14 +26,11 @@ export const OverlayProvider = ({ children }: OverlayProviderProp) => {
   return (
     <OverlayContext.Provider value={{ isOpen, openOverlay, closeOverlay }}>
       {children}
+      {isOpen && <AiChatModal onClose={closeOverlay} />}
     </OverlayContext.Provider>
   );
 };
 
 export const useOverlay = () => {
-  const context = useContext(OverlayContext);
-  if (!context) {
-    throw new Error("useOverlay must be used within an OverlayProvider");
-  }
-  return context;
+  return useContext(OverlayContext);
 };
