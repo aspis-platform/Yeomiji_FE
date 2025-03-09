@@ -13,7 +13,7 @@ interface ActivityRateProps {
   activityRate: string;
 }
 
-const ActivityRate = ({
+const ActivityRateView = ({
   onActivityRateSelect,
   onNext,
   activityRate,
@@ -144,4 +144,4 @@ const SignatureContainer = styled.div`
   cursor: pointer;
 `;
 
-export default ActivityRate;
+export default ActivityRateView;

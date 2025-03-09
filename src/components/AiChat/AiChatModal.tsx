@@ -5,11 +5,11 @@ import {
   WelcomeView,
   JobView,
   HomeView,
-  HouseOwnership,
+  HouseOwnershipView,
   PersonalityView,
-  FamilyType,
+  FamilyTypeView,
   DogSizeView,
-  ActivityRate,
+  ActivityRateView,
   ResultView,
 } from "./Views";
 import { cross_img } from "../../assets";
@@ -94,7 +94,7 @@ export const AiChatModal = ({ onClose }: Props) => {
       )}
 
       {currentScreen === 3 && (
-        <HouseOwnership
+        <HouseOwnershipView
           ownership={ownership}
           onSelectOwnership={setOwnership}
           onNext={goToNext}
@@ -110,7 +110,7 @@ export const AiChatModal = ({ onClose }: Props) => {
       )}
 
       {currentScreen === 5 && (
-        <FamilyType
+        <FamilyTypeView
           familyType={familyType}
           onFamilyTypeSelect={setFamilyType}
           onNext={goToNext}
@@ -126,7 +126,7 @@ export const AiChatModal = ({ onClose }: Props) => {
       )}
 
       {currentScreen === 7 && (
-        <ActivityRate
+        <ActivityRateView
           activityRate={activityRate}
           onActivityRateSelect={setActivityRate}
           onNext={goToNext}

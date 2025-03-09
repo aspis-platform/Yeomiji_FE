@@ -1,21 +1,21 @@
 import WelcomeView from "./01_WelcomeView";
 import JobView from "./02_JobViewView";
 import HomeView from "./03_HomeView";
-import HouseOwnership from "./04_HouseOwnership";
+import HouseOwnershipView from "./04_HouseOwnershipView";
 import PersonalityView from "./05_PersonalityView";
-import FamilyType from "./06_FamilyType";
+import FamilyTypeView from "./06_FamilyTypeView";
 import DogSizeView from "./07_DogSizeView";
-import ActivityRate from "./08_ActivityRate";
+import ActivityRateView from "./08_ActivityRateView";
 import ResultView from "./09_ResultView";
 
 export {
   WelcomeView,
   JobView,
   HomeView,
-  HouseOwnership,
+  HouseOwnershipView,
   PersonalityView,
-  FamilyType,
+  FamilyTypeView,
   DogSizeView,
-  ActivityRate,
+  ActivityRateView,
   ResultView,
 };

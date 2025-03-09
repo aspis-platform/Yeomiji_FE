@@ -8,7 +8,10 @@ interface FamilyTypeSelectProps {
   onNext: () => void;
 }
 
-const FamilyType = ({ onFamilyTypeSelect, onNext }: FamilyTypeSelectProps) => {
+const FamilyTypeView = ({
+  onFamilyTypeSelect,
+  onNext,
+}: FamilyTypeSelectProps) => {
   const data = [
     {
       id: 1,
@@ -132,4 +135,4 @@ const SignatureContainer = styled.div`
   cursor: pointer;
 `;
 
-export default FamilyType;
+export default FamilyTypeView;

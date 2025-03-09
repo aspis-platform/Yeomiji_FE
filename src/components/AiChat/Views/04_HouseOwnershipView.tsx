@@ -8,7 +8,7 @@ interface HouseOwnershipProps {
   ownership: string;
 }
 
-const HouseOwnership = ({
+const HouseOwnershipView = ({
   onSelectOwnership,
   onNext,
   ownership,
@@ -138,4 +138,4 @@ const SignatureContainer = styled.div`
   cursor: pointer;
 `;
 
-export default HouseOwnership;
+export default HouseOwnershipView;

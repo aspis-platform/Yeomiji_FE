@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../style";
 import { yeomiji_ai_logo, abst_ball, abst_spiral_green } from "../../../assets";
 
-interface HomeSelectScreenProps {
+interface PersonalityViewProps {
   onSelectPersonality: (personality: string) => void;
   onNext: () => void;
   personality: string;
@@ -12,7 +12,7 @@ const PersonalityView = ({
   onSelectPersonality,
   onNext,
   personality,
-}: HomeSelectScreenProps) => {
+}: PersonalityViewProps) => {
   const data = [
     {
       ko: "내향형",
