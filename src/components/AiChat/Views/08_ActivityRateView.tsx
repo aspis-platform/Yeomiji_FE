@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import AI_logo from "../../../assets/YeomijiAiLogoFull.svg";
-import abst_ball from "../../../assets/abstract_img_ball.svg";
-import abst_line from "../../../assets/abst_line.svg";
-import abst_spiral from "../../../assets/abst_spiral.svg";
+import { theme } from "../../../style";
+import {
+  yeomiji_ai_logo,
+  abst_ball,
+  abst_line,
+  abst_spiral,
+} from "../../../assets";
 
 interface ActivityRateProps {
   onActivityRateSelect: (size: string) => void;
@@ -11,25 +13,29 @@ interface ActivityRateProps {
   activityRate: string;
 }
 
-const ActivityRate = (props: ActivityRateProps) => {
+const ActivityRateView = ({
+  onActivityRateSelect,
+  onNext,
+  activityRate,
+}: ActivityRateProps) => {
   const data = [
     {
       ko: "조금 활발",
       en: "S",
       img: abst_line,
-      selected: props.activityRate === "S",
+      selected: activityRate === "S",
     },
     {
       ko: "보통",
       en: "M",
       img: abst_spiral,
-      selected: props.activityRate === "M",
+      selected: activityRate === "M",
     },
     {
       ko: "매우 활발",
       en: "L",
       img: abst_ball,
-      selected: props.activityRate === "L",
+      selected: activityRate === "L",
     },
   ];
 
@@ -38,8 +44,9 @@ const ActivityRate = (props: ActivityRateProps) => {
       <OptionContainer>
         {data.map((e) => (
           <SelectionButton
-            selected={e.selected}
-            onClick={() => props.onActivityRateSelect(e.en)}
+            $selected={e.selected}
+            onClick={() => onActivityRateSelect(e.en)}
+            key={e.en}
           >
             <img src={e.img} />
             <TextContainer>
@@ -50,9 +57,9 @@ const ActivityRate = (props: ActivityRateProps) => {
       </OptionContainer>
 
       <BottomSection>
-        <ContinueButton onClick={props.onNext}>다음</ContinueButton>
+        <ContinueButton onClick={onNext}>다음</ContinueButton>
         <SignatureContainer>
-          <img src={AI_logo} alt="AI 로고" />
+          <img src={yeomiji_ai_logo} alt="AI 로고" />
           <p>개인정보 처리방침 및 사용약관</p>
         </SignatureContainer>
       </BottomSection>
@@ -75,12 +82,12 @@ const TextContainer = styled.div`
   color: #9c9c9c;
 `;
 
-const SelectionButton = styled.button<{ selected: boolean }>`
+const SelectionButton = styled.button<{ $selected: boolean }>`
   width: 460px;
   height: 92px;
   background-color: white;
-  border: 1px solid ${(props) => (props.selected ? "#73D1FA" : "#e0e0e0")};
-  border-width: ${(props) => (props.selected ? "2px" : "1px")};
+  border: 1px solid ${({ $selected }) => ($selected ? "#73D1FA" : "#e0e0e0")};
+  border-width: ${({ $selected }) => ($selected ? "2px" : "1px")};
   border-radius: 4px;
 
   display: flex;
@@ -137,4 +144,4 @@ const SignatureContainer = styled.div`
   cursor: pointer;
 `;
 
-export default ActivityRate;
+export default ActivityRateView;

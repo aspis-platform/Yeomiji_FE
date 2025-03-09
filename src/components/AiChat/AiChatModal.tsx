@@ -1,18 +1,22 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { theme } from "../../style/theme";
-import cross_img from "../../assets/cross-img.svg";
-import WelcomeView from "./Views/01_WelcomeView";
-import JobView from "./Views/02_JobViewView";
-import HomeView from "./Views/03_HomeView";
-import HouseOwnership from "./Views/04_HouseOwnership";
-import PersonalityView from "./Views/05_PersonalityView";
-import FamilyType from "./Views/06_FamilyType";
-import DogSizeView from "./Views/07_DogSizeView";
-import ActivityRate from "./Views/08_ActivityRate";
-import ResultView from "./Views/09_ResultView";
+import { theme } from "../../style";
+import {
+  WelcomeView,
+  JobView,
+  HomeView,
+  HouseOwnershipView,
+  PersonalityView,
+  FamilyTypeView,
+  DogSizeView,
+  ActivityRateView,
+  ResultView,
+} from "./Views";
+import { cross_img } from "../../assets";
+import { useOverlay } from "../../context/OverlayContext";
 
-const AiChatModal = () => {
+export const AiChatModal = () => {
+  const { closeModal } = useOverlay();
   const [currentScreen, setCurrentScreen] = useState(0);
   const [job, setJob] = useState("");
   const [home, setHome] = useState("");
@@ -72,7 +76,7 @@ const AiChatModal = () => {
           <Question>{screenTitles[currentScreen].title}</Question>
           <p>{screenTitles[currentScreen].subtitle}</p>
         </Title>
-        <CloseButton>
+        <CloseButton onClick={closeModal}>
           <img src={cross_img} alt="닫기" />
         </CloseButton>
       </TopContainer>
@@ -88,7 +92,7 @@ const AiChatModal = () => {
       )}
 
       {currentScreen === 3 && (
-        <HouseOwnership
+        <HouseOwnershipView
           ownership={ownership}
           onSelectOwnership={setOwnership}
           onNext={goToNext}
@@ -104,7 +108,7 @@ const AiChatModal = () => {
       )}
 
       {currentScreen === 5 && (
-        <FamilyType
+        <FamilyTypeView
           familyType={familyType}
           onFamilyTypeSelect={setFamilyType}
           onNext={goToNext}
@@ -120,7 +124,7 @@ const AiChatModal = () => {
       )}
 
       {currentScreen === 7 && (
-        <ActivityRate
+        <ActivityRateView
           activityRate={activityRate}
           onActivityRateSelect={setActivityRate}
           onNext={goToNext}
@@ -184,5 +188,3 @@ const CloseButton = styled.button`
   background-color: ${theme.color.white};
   cursor: pointer;
 `;
-
-export default AiChatModal;

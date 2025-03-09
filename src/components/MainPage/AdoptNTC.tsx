@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme } from "../../style/theme";
-import NTCCard from "../MainPage/NTCCard";
+import { theme } from "../../style";
 import MoreButton from "./MoreButton";
+import NTCCard from "./NTCCard";
 
 const AdoptNTC = () => {
   return (

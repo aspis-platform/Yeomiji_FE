@@ -1,13 +1,12 @@
-import React from "react";
 import styled from "styled-components";
-import logo_image from "../../assets/yeomiji-logo.svg";
+import { yeomiji_logo } from "../../assets";
 
 const Footer = () => {
   return (
     <FooterWrapper>
       <FooterContent>
         <Logo>
-          <img src={logo_image} alt="여미지 로고" />
+          <img src={yeomiji_logo} alt="여미지 로고" />
         </Logo>
         <InfoContainer>
           <Title>모든 생명이 사랑을 만나는 여수 여미지 보호소</Title>

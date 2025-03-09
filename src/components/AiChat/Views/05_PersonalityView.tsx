@@ -1,28 +1,30 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import AI_logo from "../../../assets/YeomijiAiLogoFull.svg";
-import abst_img_ball from "../../../assets/abstract_img_ball.svg";
-import abst_img_spiral from "../../../assets/abstract_img_spiral.svg";
+import { theme } from "../../../style";
+import { yeomiji_ai_logo, abst_ball, abst_spiral_green } from "../../../assets";
 
-interface HomeSelectScreenProps {
+interface PersonalityViewProps {
   onSelectPersonality: (personality: string) => void;
   onNext: () => void;
   personality: string;
 }
 
-const PersonalityView = (props: HomeSelectScreenProps) => {
+const PersonalityView = ({
+  onSelectPersonality,
+  onNext,
+  personality,
+}: PersonalityViewProps) => {
   const data = [
     {
       ko: "내향형",
       en: "Introvert",
-      img: abst_img_ball,
-      selected: props.personality === "Introvert",
+      img: abst_ball,
+      selected: personality === "Introvert",
     },
     {
       ko: "외향형",
       en: "Extrovert",
-      img: abst_img_spiral,
-      selected: props.personality === "Extrovert",
+      img: abst_spiral_green,
+      selected: personality === "Extrovert",
     },
   ];
 
@@ -31,8 +33,9 @@ const PersonalityView = (props: HomeSelectScreenProps) => {
       <OptionContainer>
         {data.map((e) => (
           <SelectionButton
-            selected={e.selected}
-            onClick={() => props.onSelectPersonality(e.en)}
+            $selected={e.selected}
+            onClick={() => onSelectPersonality(e.en)}
+            key={e.en}
           >
             <img src={e.img} />
             <TextContainer>
@@ -44,9 +47,9 @@ const PersonalityView = (props: HomeSelectScreenProps) => {
       </OptionContainer>
 
       <BottomSection>
-        <ContinueButton onClick={props.onNext}>다음</ContinueButton>
+        <ContinueButton onClick={onNext}>다음</ContinueButton>
         <SignatureContainer>
-          <img src={AI_logo} alt="AI 로고" />
+          <img src={yeomiji_ai_logo} alt="AI 로고" />
           <p>개인정보 처리방침 및 사용약관</p>
         </SignatureContainer>
       </BottomSection>
@@ -69,12 +72,12 @@ const TextContainer = styled.div`
   color: #9c9c9c;
 `;
 
-const SelectionButton = styled.button<{ selected: boolean }>`
+const SelectionButton = styled.button<{ $selected: boolean }>`
   width: 460px;
   height: 152px;
   background-color: white;
-  border: 1px solid ${(props) => (props.selected ? "#73D1FA" : "#e0e0e0")};
-  border-width: ${(props) => (props.selected ? "2px" : "1px")};
+  border: 1px solid ${({ $selected }) => ($selected ? "#73D1FA" : "#e0e0e0")};
+  border-width: ${({ $selected }) => ($selected ? "2px" : "1px")};
   border-radius: 4px;
 
   display: flex;

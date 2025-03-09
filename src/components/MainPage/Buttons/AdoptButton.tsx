@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import dog_image from "../../../assets/dog-image.svg";
-import dog_image_green from "../../../assets/dog-image-green.svg";
+import { theme } from "../../../style";
+import { dog_img, dog_img_green } from "../../../assets";
 import { Link } from "react-router-dom";
 
 const AdoptButton = () => {
@@ -9,8 +8,8 @@ const AdoptButton = () => {
     <Link to={"/adoption"} style={{ textDecoration: "none" }}>
       <ButtonContainer>
         <MainButton>
-          <OrgImg src={dog_image} />
-          <ChgImg src={dog_image_green} />
+          <OrgImg src={dog_img} />
+          <ChgImg src={dog_img_green} />
         </MainButton>
         <ButtonDesc>입양 안내</ButtonDesc>
       </ButtonContainer>

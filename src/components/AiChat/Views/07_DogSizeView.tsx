@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import AI_logo from "../../../assets/YeomijiAiLogoFull.svg";
-import dog_3d from "../../../assets/dog_img_3d.svg";
+import { theme } from "../../../style";
+import { yeomiji_ai_logo, dog_img_3d } from "../../../assets";
 
 interface DogSizeViewProps {
   onDogSizeSelect: (size: string) => void;
@@ -9,22 +8,26 @@ interface DogSizeViewProps {
   dogSize: string;
 }
 
-const DogSizeView = (props: DogSizeViewProps) => {
+const DogSizeView = ({
+  onDogSizeSelect,
+  onNext,
+  dogSize,
+}: DogSizeViewProps) => {
   const data = [
     {
       ko: "소형견",
       en: "S",
-      selected: props.dogSize === "S",
+      selected: dogSize === "S",
     },
     {
       ko: "중형견",
       en: "M",
-      selected: props.dogSize === "M",
+      selected: dogSize === "M",
     },
     {
       ko: "대형견",
       en: "L",
-      selected: props.dogSize === "L",
+      selected: dogSize === "L",
     },
   ];
 
@@ -33,10 +36,11 @@ const DogSizeView = (props: DogSizeViewProps) => {
       <OptionContainer>
         {data.map((e) => (
           <SelectionButton
-            selected={e.selected}
-            onClick={() => props.onDogSizeSelect(e.en)}
+            $selected={e.selected}
+            onClick={() => onDogSizeSelect(e.en)}
+            key={e.en}
           >
-            <img src={dog_3d} />
+            <img src={dog_img_3d} />
             <TextContainer>
               <BigText>{e.ko}</BigText>
             </TextContainer>
@@ -45,9 +49,9 @@ const DogSizeView = (props: DogSizeViewProps) => {
       </OptionContainer>
 
       <BottomSection>
-        <ContinueButton onClick={props.onNext}>다음</ContinueButton>
+        <ContinueButton onClick={onNext}>다음</ContinueButton>
         <SignatureContainer>
-          <img src={AI_logo} alt="AI 로고" />
+          <img src={yeomiji_ai_logo} alt="AI 로고" />
           <p>개인정보 처리방침 및 사용약관</p>
         </SignatureContainer>
       </BottomSection>
@@ -70,12 +74,12 @@ const TextContainer = styled.div`
   color: #9c9c9c;
 `;
 
-const SelectionButton = styled.button<{ selected: boolean }>`
+const SelectionButton = styled.button<{ $selected: boolean }>`
   width: 460px;
   height: 92px;
   background-color: white;
-  border: 1px solid ${(props) => (props.selected ? "#73D1FA" : "#e0e0e0")};
-  border-width: ${(props) => (props.selected ? "2px" : "1px")};
+  border: 1px solid ${({ $selected }) => ($selected ? "#73D1FA" : "#e0e0e0")};
+  border-width: ${({ $selected }) => ($selected ? "2px" : "1px")};
   border-radius: 4px;
 
   display: flex;

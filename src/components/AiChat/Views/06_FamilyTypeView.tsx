@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import AI_logo from "../../../assets/YeomijiAiLogoFull.svg";
-import arrow from "../../../assets/arrow.svg";
+import { theme } from "../../../style";
+import { yeomiji_ai_logo, triangle } from "../../../assets";
 
 interface FamilyTypeSelectProps {
   familyType: string;
@@ -9,30 +8,41 @@ interface FamilyTypeSelectProps {
   onNext: () => void;
 }
 
-const FamilyType = (props: FamilyTypeSelectProps) => {
+const FamilyTypeView = ({
+  onFamilyTypeSelect,
+  onNext,
+}: FamilyTypeSelectProps) => {
   const data = [
     {
+      id: 1,
       name: "혼자 사는 1인 가구",
     },
     {
+      id: 2,
       name: "부부만 있는 가구(아이 없음)",
     },
     {
+      id: 3,
       name: "어린이가 있는 가구",
     },
     {
+      id: 4,
       name: "청소년 또는 성인 자녀가 있는 가구",
     },
     {
+      id: 5,
       name: "노인이 있는 가구",
     },
     {
+      id: 6,
       name: "다자녀 가구",
     },
     {
+      id: 7,
       name: "반려 동물이 이미 있는 가구",
     },
     {
+      id: 8,
       name: "대가족(3세대 이상 함께 거주)",
     },
   ];
@@ -40,26 +50,27 @@ const FamilyType = (props: FamilyTypeSelectProps) => {
   return (
     <>
       <SelectionContainer>
-        <select>
-          <option disabled hidden selected>
+        <select defaultValue={"가족 형태를 선택하세요."}>
+          <option disabled hidden>
             가족 형태를 선택하세요.
           </option>
           {data.map((e) => (
             <option
-              onChange={() => props.onFamilyTypeSelect(e.name)}
+              onChange={() => onFamilyTypeSelect(e.name)}
               value={e.name}
+              key={e.id}
             >
               {e.name}
             </option>
           ))}
         </select>
-        <img src={arrow} />
+        <img src={triangle} />
       </SelectionContainer>
 
       <BottomSection>
-        <ContinueButton onClick={props.onNext}>다음</ContinueButton>
+        <ContinueButton onClick={onNext}>다음</ContinueButton>
         <SignatureContainer>
-          <img src={AI_logo} alt="AI 로고" />
+          <img src={yeomiji_ai_logo} alt="AI 로고" />
           <p>개인정보 처리방침 및 사용약관</p>
         </SignatureContainer>
       </BottomSection>
@@ -124,4 +135,4 @@ const SignatureContainer = styled.div`
   cursor: pointer;
 `;
 
-export default FamilyType;
+export default FamilyTypeView;

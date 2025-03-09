@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import IntroBanner from "../components/base/IntroBanner";
+import { IntroBanner } from "../components/base";
 
 const AdoptionInfo = () => {
   return (

@@ -1,12 +1,11 @@
-import React from "react";
 import styled from "styled-components";
-import { theme } from "../../style/theme";
-import arrow_image from "../../assets/arrow-image.svg";
+import { theme } from "../../style";
+import { arrow_img } from "../../assets";
 
 const MoreButton = () => {
   return (
     <ButtonContainer>
-      <img src={arrow_image} alt="" />
+      <img src={arrow_img} alt="" />
     </ButtonContainer>
   );
 };

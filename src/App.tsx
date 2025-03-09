@@ -1,48 +1,52 @@
-import "./App.css";
 import { Outlet, Route, Routes } from "react-router-dom";
-import NavBar from "./components/base/NavBar";
-import Footer from "./components/base/Footer";
-import HomepageMain from "./pages/HomepageMain";
+import {
+  AdoptionInfo,
+  DonateInfo,
+  GroupIntro,
+  HomepageMain,
+  VolunteerIntro,
+} from "./pages";
+import { GlobalStyle } from "./style";
+import { CafeButton, AiChatButton, NavBar, Footer } from "./components/base";
 import styled from "styled-components";
-import GroupIntro from "./pages/GroupIntro";
-import AiChatButton from "./components/base/AiChatButton";
-import CafeButton from "./components/base/CafeButton";
-import VolunteerIntro from "./pages/VolunteerIntro";
-import AdoptionInfo from "./pages/AdoptionInfo";
-import DonateInfo from "./pages/DonateInfo";
+import { AiChatModal } from "./components/AiChat";
+import { OverlayProvider } from "./context/OverlayContext";
 
 function Layout() {
   return (
     <>
-      <StyledSection>
+      <GlobalStyle />
+      <FloatingButtons>
         <CafeButton />
         <AiChatButton />
-      </StyledSection>
+      </FloatingButtons>
 
-      <StyledDiv>
+      <Wrapper>
         <NavBar />
         <Outlet />
         <Footer />
-      </StyledDiv>
+      </Wrapper>
     </>
   );
 }
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={<HomepageMain />} />
-        <Route path="/introduction" element={<GroupIntro />} />
-        <Route path="/volunteer" element={<VolunteerIntro />} />
-        <Route path="/adoption" element={<AdoptionInfo />} />
-        <Route path="/donation" element={<DonateInfo />} />
-      </Route>
-    </Routes>
+    <OverlayProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<HomepageMain />} />
+          <Route path="/introduction" element={<GroupIntro />} />
+          <Route path="/volunteer" element={<VolunteerIntro />} />
+          <Route path="/adoption" element={<AdoptionInfo />} />
+          <Route path="/donation" element={<DonateInfo />} />
+        </Route>
+      </Routes>
+    </OverlayProvider>
   );
 }
 
-const StyledSection = styled.section`
+const FloatingButtons = styled.section`
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -52,7 +56,7 @@ const StyledSection = styled.section`
   position: fixed;
   z-index: 10;
 `;
-const StyledDiv = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
