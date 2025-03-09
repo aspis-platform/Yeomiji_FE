@@ -11,11 +11,8 @@ import { CafeButton, AiChatButton, NavBar, Footer } from "./components/base";
 import styled from "styled-components";
 import { AiChatModal } from "./components/AiChat";
 import { OverlayProvider } from "./context/OverlayContext";
-import { useOverlay } from "./context/OverlayContext";
 
 function Layout() {
-  const { closeOverlay } = useOverlay();
-
   return (
     <>
       <GlobalStyle />

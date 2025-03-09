@@ -13,12 +13,10 @@ import {
   ResultView,
 } from "./Views";
 import { cross_img } from "../../assets";
+import { useOverlay } from "../../context/OverlayContext";
 
-interface Props {
-  onClose: () => void;
-}
-
-export const AiChatModal = ({ onClose }: Props) => {
+export const AiChatModal = () => {
+  const { closeModal } = useOverlay();
   const [currentScreen, setCurrentScreen] = useState(0);
   const [job, setJob] = useState("");
   const [home, setHome] = useState("");
@@ -78,7 +76,7 @@ export const AiChatModal = ({ onClose }: Props) => {
           <Question>{screenTitles[currentScreen].title}</Question>
           <p>{screenTitles[currentScreen].subtitle}</p>
         </Title>
-        <CloseButton onClick={onClose}>
+        <CloseButton onClick={closeModal}>
           <img src={cross_img} alt="닫기" />
         </CloseButton>
       </TopContainer>

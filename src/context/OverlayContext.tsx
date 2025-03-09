@@ -1,16 +1,19 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { AiChatModal } from "../components/AiChat";
+import {
+  createContext,
+  ReactElement,
+  ReactNode,
+  useContext,
+  useState,
+} from "react";
 
 interface OverlayContextType {
-  isOpen: boolean;
-  openOverlay: () => void;
-  closeOverlay: () => void;
+  openModal: (modal: ReactElement) => void;
+  closeModal: () => void;
 }
 
 const OverlayContext = createContext<OverlayContextType>({
-  isOpen: false,
-  openOverlay: () => {},
-  closeOverlay: () => {},
+  openModal: (_) => {},
+  closeModal: () => {},
 });
 
 interface OverlayProviderProp {
@@ -18,15 +21,15 @@ interface OverlayProviderProp {
 }
 
 export const OverlayProvider = ({ children }: OverlayProviderProp) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState<ReactElement | null>(null);
 
-  const openOverlay = () => setIsOpen(true);
-  const closeOverlay = () => setIsOpen(false);
+  const openModal = (modal: ReactElement) => setModal(modal);
+  const closeModal = () => setModal(null);
 
   return (
-    <OverlayContext.Provider value={{ isOpen, openOverlay, closeOverlay }}>
+    <OverlayContext.Provider value={{ openModal, closeModal }}>
       {children}
-      {isOpen && <AiChatModal onClose={closeOverlay} />}
+      {modal && modal}
     </OverlayContext.Provider>
   );
 };
