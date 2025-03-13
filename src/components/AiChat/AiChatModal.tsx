@@ -14,10 +14,18 @@ import {
 } from "./Views";
 import { cross_img } from "../../assets";
 import { useOverlay } from "../../context/OverlayContext";
+import axios from "axios";
+
+interface BreedResult {
+  breed: string;
+  reason: string;
+}
 
 export const AiChatModal = () => {
   const { closeModal } = useOverlay();
   const [currentScreen, setCurrentScreen] = useState(0);
+  const [result, setResult] = useState<BreedResult | null>(null);
+
   const [job, setJob] = useState("");
   const [home, setHome] = useState("");
   const [ownership, setOwnership] = useState("");
@@ -28,6 +36,32 @@ export const AiChatModal = () => {
 
   const goToNext = () => {
     setCurrentScreen(currentScreen + 1);
+  };
+
+  const onSeeResult = async () => {
+    const body = {
+      job,
+      home,
+      ownership,
+      personality,
+      family_type: familyType,
+      dog_size: dogSize,
+      activity_rate: activityRate,
+    };
+
+    console.log(body);
+
+    try {
+      const response = await axios.post<BreedResult>(
+        "https://aspis-ai-api.ncloud.sbs/v1/suggest/breed",
+        body
+      );
+
+      setResult(response.data);
+      setCurrentScreen(8);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const screenTitles = [
@@ -65,7 +99,6 @@ export const AiChatModal = () => {
     },
     {
       title: "당신에게 잘 맞는 반려 견종은...",
-      subtitle: "",
     },
   ];
 
@@ -127,11 +160,13 @@ export const AiChatModal = () => {
         <ActivityRateView
           activityRate={activityRate}
           onActivityRateSelect={setActivityRate}
-          onNext={goToNext}
+          onSeeResult={onSeeResult}
         />
       )}
 
-      {currentScreen === 8 && <ResultView />}
+      {currentScreen === 8 && result && (
+        <ResultView breed={result.breed} reason={result.reason} />
+      )}
     </ChatContainer>
   );
 };
