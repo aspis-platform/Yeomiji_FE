@@ -9,7 +9,6 @@ import {
 import { GlobalStyle } from "./style";
 import { CafeButton, AiChatButton, NavBar, Footer } from "./components/base";
 import styled from "styled-components";
-import { AiChatModal } from "./components/AiChat";
 import { OverlayProvider } from "./context/OverlayContext";
 
 function Layout() {
