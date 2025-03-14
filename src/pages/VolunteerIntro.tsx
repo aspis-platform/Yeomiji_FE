@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import IntroBanner from "../components/base/IntroBanner";
-import MainVolunteer from "../components/VolunteerIntroPage/MainVolunteer";
+import { IntroBanner } from "../components/base";
+import { MainVolunteer } from "../components/VolunteerIntroPage";
 
 const VolunteerIntro = () => {
   return (

@@ -1,0 +1,21 @@
+{
+  "name": "여수 여미지 보호소",
+  "short_name": "여미지 보호소",
+  "description": "유기동물을 사랑하는 직장인 봉사자들이 운영하는 여수의 사설 유기동물 보호소입니다.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffcc00",
+  "icons": [
+    {
+      "src": "./icons/yeomiji-logo-png.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/yeomiji-logo-png.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

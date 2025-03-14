@@ -1,9 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import AI_logo from "../../../assets/YeomijiAiLogoFull.svg";
-import APT_img from "../../../assets/APT_img.svg";
-import Villa_img from "../../../assets/Villa_img.svg";
-import house_img from "../../../assets/house_img.svg";
+import { theme } from "../../../style";
+import {
+  yeomiji_ai_logo,
+  APT_img,
+  villa_img,
+  house_img,
+} from "../../../assets";
 
 interface HomeSelectScreenProps {
   onSelectHome: (home: string) => void;
@@ -11,25 +13,25 @@ interface HomeSelectScreenProps {
   home: string;
 }
 
-const HomeView = (props: HomeSelectScreenProps) => {
+const HomeView = ({ onSelectHome, onNext, home }: HomeSelectScreenProps) => {
   const data = [
     {
       ko: "아파트",
       en: "Apartment",
       img: APT_img,
-      selected: props.home === "Apartment",
+      selected: home === "Apartment",
     },
     {
       ko: "빌라",
       en: "Villa",
-      img: Villa_img,
-      selected: props.home === "Villa",
+      img: villa_img,
+      selected: home === "Villa",
     },
     {
       ko: "단독 주택",
       en: "House",
       img: house_img,
-      selected: props.home === "House",
+      selected: home === "House",
     },
   ];
 
@@ -38,8 +40,9 @@ const HomeView = (props: HomeSelectScreenProps) => {
       <OptionContainer>
         {data.map((e) => (
           <SelectionButton
-            selected={e.selected}
-            onClick={() => props.onSelectHome(e.en)}
+            $selected={e.selected}
+            onClick={() => onSelectHome(e.en)}
+            key={e.en}
           >
             <img src={e.img} />
             <TextContainer>
@@ -51,9 +54,11 @@ const HomeView = (props: HomeSelectScreenProps) => {
       </OptionContainer>
 
       <BottomSection>
-        <ContinueButton onClick={props.onNext}>다음</ContinueButton>
+        <ContinueButton onClick={() => home && onNext()} disabled={!home}>
+          다음
+        </ContinueButton>
         <SignatureContainer>
-          <img src={AI_logo} alt="AI 로고" />
+          <img src={yeomiji_ai_logo} alt="AI 로고" />
           <p>개인정보 처리방침 및 사용약관</p>
         </SignatureContainer>
       </BottomSection>
@@ -76,12 +81,12 @@ const TextContainer = styled.div`
   color: #9c9c9c;
 `;
 
-const SelectionButton = styled.button<{ selected: boolean }>`
+const SelectionButton = styled.button<{ $selected: boolean }>`
   width: 460px;
   height: 92px;
   background-color: white;
-  border: 1px solid ${(props) => (props.selected ? "#73D1FA" : "#e0e0e0")};
-  border-width: ${(props) => (props.selected ? "2px" : "1px")};
+  border: 1px solid ${({ $selected }) => ($selected ? "#73D1FA" : "#e0e0e0")};
+  border-width: ${({ $selected }) => ($selected ? "2px" : "1px")};
   border-radius: 4px;
 
   display: flex;
@@ -117,13 +122,13 @@ const BottomSection = styled.section`
 const ContinueButton = styled.button`
   width: 480px;
   height: 80px;
-  background-color: #86b2f5;
+  background-color: ${({ disabled }) => (disabled ? "#c8c8c8" : "#86b2f5")};
   border: none;
   border-radius: 23px;
   color: ${theme.color.white};
   font-size: 32px;
   font-weight: 600;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
 const SignatureContainer = styled.div`

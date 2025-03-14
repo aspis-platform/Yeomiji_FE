@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { theme } from "../../../style/theme";
-import AI_logo from "../../../assets/YeomijiAiLogoFull.svg";
-import house_img from "../../../assets/house_img.svg";
+import { theme } from "../../../style";
+import { yeomiji_ai_logo, house_img } from "../../../assets";
 
 interface HouseOwnershipProps {
   onSelectOwnership: (home: string) => void;
@@ -9,22 +8,26 @@ interface HouseOwnershipProps {
   ownership: string;
 }
 
-const HouseOwnership = (props: HouseOwnershipProps) => {
+const HouseOwnershipView = ({
+  onSelectOwnership,
+  onNext,
+  ownership,
+}: HouseOwnershipProps) => {
   const data = [
     {
       ko: "자가 주택",
       en: "Owner-occupied",
-      selected: props.ownership === "Owner-occupied",
+      selected: ownership === "Owner-occupied",
     },
     {
       ko: "전세 주택",
       en: "Chartered house",
-      selected: props.ownership === "Chartered house",
+      selected: ownership === "Chartered house",
     },
     {
       ko: "월세 주택",
       en: "Monthly Rent",
-      selected: props.ownership === "Monthly Rent",
+      selected: ownership === "Monthly Rent",
     },
   ];
 
@@ -33,8 +36,9 @@ const HouseOwnership = (props: HouseOwnershipProps) => {
       <OptionContainer>
         {data.map((e) => (
           <SelectionButton
-            selected={e.selected}
-            onClick={() => props.onSelectOwnership(e.en)}
+            $selected={e.selected}
+            onClick={() => onSelectOwnership(e.en)}
+            key={e.en}
           >
             <img src={house_img} />
             <TextContainer>
@@ -46,9 +50,14 @@ const HouseOwnership = (props: HouseOwnershipProps) => {
       </OptionContainer>
 
       <BottomSection>
-        <ContinueButton onClick={props.onNext}>다음</ContinueButton>
+        <ContinueButton
+          onClick={() => ownership && onNext()}
+          disabled={!ownership}
+        >
+          다음
+        </ContinueButton>
         <SignatureContainer>
-          <img src={AI_logo} alt="AI 로고" />
+          <img src={yeomiji_ai_logo} alt="AI 로고" />
           <p>개인정보 처리방침 및 사용약관</p>
         </SignatureContainer>
       </BottomSection>
@@ -71,12 +80,12 @@ const TextContainer = styled.div`
   color: #9c9c9c;
 `;
 
-const SelectionButton = styled.button<{ selected: boolean }>`
+const SelectionButton = styled.button<{ $selected: boolean }>`
   width: 460px;
   height: 92px;
   background-color: white;
-  border: 1px solid ${(props) => (props.selected ? "#73D1FA" : "#e0e0e0")};
-  border-width: ${(props) => (props.selected ? "2px" : "1px")};
+  border: 1px solid ${({ $selected }) => ($selected ? "#73D1FA" : "#e0e0e0")};
+  border-width: ${({ $selected }) => ($selected ? "2px" : "1px")};
   border-radius: 4px;
 
   display: flex;
@@ -113,13 +122,13 @@ const BottomSection = styled.section`
 const ContinueButton = styled.button`
   width: 480px;
   height: 80px;
-  background-color: #86b2f5;
+  background-color: ${({ disabled }) => (disabled ? "#c8c8c8" : "#86b2f5")};
   border: none;
   border-radius: 23px;
   color: ${theme.color.white};
   font-size: 32px;
   font-weight: 600;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
 const SignatureContainer = styled.div`
@@ -134,4 +143,4 @@ const SignatureContainer = styled.div`
   cursor: pointer;
 `;
 
-export default HouseOwnership;
+export default HouseOwnershipView;
