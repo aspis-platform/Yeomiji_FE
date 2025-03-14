@@ -49,8 +49,6 @@ export const AiChatModal = () => {
       activity_rate: activityRate,
     };
 
-    console.log(body);
-
     try {
       const response = await axios.post<BreedResult>(
         "https://aspis-ai-api.ncloud.sbs/v1/suggest/breed",
