@@ -1,5 +1,5 @@
 import WelcomeView from "./01_WelcomeView";
-import JobView from "./02_JobViewView";
+import JobView from "./02_JobView";
 import HomeView from "./03_HomeView";
 import HouseOwnershipView from "./04_HouseOwnershipView";
 import PersonalityView from "./05_PersonalityView";
